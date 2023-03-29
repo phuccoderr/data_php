@@ -24,6 +24,7 @@ if (is_method_post()) {
         js_alert("dang nhap thanh cong");
         $_SESSION["username"] = $username;
         $_SESSION["user_id"] = $user["id"];
+        js_redirect_to("Test.php");
     } else {
         js_alert(" mat khau khong hop le");
         js_redirect_to("login.php");

@@ -1,5 +1,5 @@
 <?php
 include("include/common.php");
 session_destroy();
-js_redirect_to("/");
+js_redirect_to("Test.php");
 ?>
