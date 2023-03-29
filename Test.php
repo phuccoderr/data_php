@@ -78,12 +78,15 @@ left join classes cls on st.class_id = cls.id;");
 <body>
     <div class="container">
         <div class="mb-3">
-            <a href="../data_php/admin/class/create.php" class="btn btn-a">Thêm mới lớp</a>
+            <a href="../data_php/admin/student/create.php" class="btn btn-a">Thêm mới lớp</a>
+            <?php if(!is_logged()) { ?>
+                <a href="login.php" class="btn btn-a">đăng nhập tài khoản</a>
+                <a href="register.php" class="btn btn-a">đăng ký tài khoản</a>
+            <?php } else { ?>
+                <a href="logout.php" class="btn btn-a">đăng xuất</a>
+            <?php } ?>
         </div>
-
         <table>
-          
-
             <thead>
                 <tr>
                     <th>ID</th>
@@ -117,7 +120,7 @@ left join classes cls on st.class_id = cls.id;");
                             <td>$gender</td>
                             <td>$address</td>
                             <td>$class_id</td>
-                            <td>$img_path</td>
+                            <td><img src="$img_path" width="70" /></td>
                             <td>$class_name</td>
                             <td>
                                 <a href="#" class="btn btn-a">Chi tiết</a>

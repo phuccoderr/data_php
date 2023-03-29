@@ -2,10 +2,10 @@
 include("../../include/common.php");
 $_title = "Thêm Học Sinh";
 include("../_header.php");
+check_login();
 //xu ly them
 if(is_method_post()) {
     //upload va nhan lai filename
-    $filename = upload_and_return_filename("img_path","student");
     
 
     //dung file name nhan duoc de luu vao db
@@ -15,14 +15,12 @@ if(is_method_post()) {
     $address = $_POST["address"] ?? "";
     $class_id = $_POST["class_id"] ?? "";
     $img_path = upload_and_return_filename("img_path","students/img");
-    
-
     $sql = "insert into students(fullname,dob,gender,address,class_id,img_path) values(?,?,?,?,?,?)";
     $param = array($fullname,$dob,$gender,$address,$class_id,$img_path);
     db_execute($sql,$param);
     
     js_alert("them thanh cong");
-    js_redirect_to("/");
+    js_redirect_to("/Test.php");
 }
 $title = "them hoc sinh";
 include("../_header.php")
@@ -58,7 +56,7 @@ include("../_header.php")
     </select>
     <br>
     <label>chọn ảnh đại diện: </label>
-    <input type="file" name="img_path[]" multiple accept=".png, .jpg, .jpeg" />
+    <input type="file" name="img_path" accept=".png, .jpg, .jpeg" />
     <br>
 
     <input type="submit" value="thêm học sinh" />

@@ -1,10 +1,20 @@
 <?php
 
 include("config.php");
-
+session_start();
 /*
  * Hiển thị alert
  */
+function is_logged() {
+	return isset($_SESSION["username"]) && !empty($_SESSION["username"]);
+
+}
+function check_login() {
+	if(!is_logged()) {
+		js_alert("can dang nhap chuc nang nay");
+		js_redirect_to("login.php");
+	}
+}
 function js_alert(string $text)
 {
 	echo "<script>alert('" . addslashes($text) . "');</script>";
